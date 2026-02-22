@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Focus Mode — FocusOS</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: #0a0a0f;
+      color: #f0f0f5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+    }
+    .container { max-width: 440px; padding: 40px; }
+    .icon { font-size: 48px; margin-bottom: 16px; }
+    h1 { font-size: 24px; font-weight: 600; margin-bottom: 8px; }
+    .timer { font-size: 48px; font-family: 'JetBrains Mono', monospace; margin: 32px 0; font-variant-numeric: tabular-nums; }
+    .message { font-size: 15px; color: #6b6b80; line-height: 1.6; margin-bottom: 32px; }
+    a { color: #6366f1; text-decoration: none; font-size: 14px; }
+    a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="icon">🔒</div>
+    <h1>Focus Mode Active</h1>
+    <div class="timer" id="timer">--:--</div>
+    <p class="message">This site is blocked during your focus session.<br>Stay with your work — you're building something that matters.</p>
+    <a href="#" id="backLink">← Back to FocusOS</a>
+  </div>
+  <script src="blocked.js"></script>
+</body>
+</html>
