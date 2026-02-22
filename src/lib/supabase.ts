@@ -14,5 +14,12 @@ export const isSupabaseConfigured = supabaseConfigError === null;
 
 export const supabase = createClient(
   supabaseUrl || FALLBACK_SUPABASE_URL,
-  supabaseAnonKey || FALLBACK_SUPABASE_ANON_KEY
+  supabaseAnonKey || FALLBACK_SUPABASE_ANON_KEY,
+  {
+    auth: {
+      persistSession: true,
+      autoRefreshToken: true,
+      detectSessionInUrl: true
+    }
+  }
 );

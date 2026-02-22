@@ -10,6 +10,8 @@ interface AuthUser {
 interface AuthResult {
   ok: boolean;
   error?: string;
+  message?: string;
+  needsEmailConfirmation?: boolean;
 }
 
 interface AuthContextType {
@@ -106,7 +108,16 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   };
 
   const signup = async (name: string, email: string, password: string): Promise<AuthResult> => {
-    const { data, error } = await supabase.auth.signUp({ email, password });
+    const emailRedirectTo = typeof window !== "undefined"
+      ? `${window.location.origin}/auth`
+      : undefined;
+
+    const { data, error } = await supabase.auth.signUp({
+      email,
+      password,
+      options: { emailRedirectTo }
+    });
+
     if (error) {
       return { ok: false, error: error.message };
     }
@@ -122,6 +133,14 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         },
         { onConflict: "id" }
       );
+    }
+
+    if (!data.session && data.user) {
+      return {
+        ok: true,
+        needsEmailConfirmation: true,
+        message: "Check your inbox to confirm your email, then sign in."
+      };
     }
 
     return { ok: true };

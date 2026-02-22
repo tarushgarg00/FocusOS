@@ -77,6 +77,13 @@ Optional extension variables for install flow:
 
 After adding/updating env vars, redeploy the latest commit.
 
+Supabase Auth settings required for email confirmation links:
+
+- Authentication -> URL Configuration -> Site URL: set to your production URL (for example `https://focusos-sable.vercel.app`)
+- Add Redirect URLs for:
+  - `https://focusos-sable.vercel.app/auth`
+  - `http://localhost:8080/auth` (or your local dev port)
+
 ## Extension Setup
 
 FocusOS supports Chrome, Edge, and Brave.
