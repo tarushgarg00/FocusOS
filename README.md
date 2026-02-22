@@ -58,6 +58,25 @@ npx tsc --noEmit -p tsconfig.app.json
 npm run build
 ```
 
+## Vercel Deployment
+
+Set these Environment Variables in Vercel (Project -> Settings -> Environment Variables):
+
+- `VITE_SUPABASE_URL`
+- `VITE_SUPABASE_ANON_KEY`
+
+Optional extension variables for install flow:
+
+- `VITE_FOCUSOS_CHROME_EXTENSION_ID`
+- `VITE_FOCUSOS_EDGE_EXTENSION_ID`
+- `VITE_FOCUSOS_BRAVE_EXTENSION_ID`
+- `VITE_FOCUSOS_CHROME_INSTALL_URL`
+- `VITE_FOCUSOS_EDGE_INSTALL_URL`
+- `VITE_FOCUSOS_BRAVE_INSTALL_URL`
+- `VITE_FOCUSOS_EXTENSION_ZIP_URL`
+
+After adding/updating env vars, redeploy the latest commit.
+
 ## Extension Setup
 
 FocusOS supports Chrome, Edge, and Brave.
